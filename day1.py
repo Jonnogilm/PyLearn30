@@ -1,0 +1,5 @@
+print(type(3.14))
+print(type(14))
+print('Hello, world!')
+print(type(2+1j))
+print(3+1j)
