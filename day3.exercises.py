@@ -54,5 +54,38 @@ print('Difference in slopes: ', slope_1-slope_2)
 x = 4
 y = 3
 
-result = x^2 + 6x + 9
+result = x**2 + 6*x + 9 - y
 
+print(len('dragon') > len('python'))
+print('on' in 'python' and 'on' in 'dragon')
+print('jargon' in 'I hope this course is not full of jargon')
+print('on' not in 'python' and 'on' not in 'dragon')
+
+python_length = len('python')
+python_length = str(float(python_length))
+print(python_length)
+
+num = 54
+is_even = 54 % 2
+
+floor = 7 // 3 == int(2.7)
+print(floor)
+
+check_type = type('10') == type(10)
+print(check_type)
+
+check_equals = int(float('9.8')) == 10
+print(check_equals)
+
+hours = int(input('Enter hours: '))
+rate = float(input("Enter rate per hour: "))
+print('Your weekly earning is ', hours*rate)
+
+years_lived = int(input('Enter the number of years you have lived: '))
+print(f'You have lived for {years_lived*60*60*24*365.25} seconds.')
+
+print('1 1 1 1 1')
+print('2 1 2 4 8')
+print('3 1 3 9 27')
+print('4 1 4 16 64')
+print('5 1 5 25 125')
