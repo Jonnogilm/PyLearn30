@@ -2,7 +2,7 @@
 # shorthand: code if condition else code
 # && is replaced by and so if condition and condition: code
 # or is ||
-
+'''
 user_age = int(input("Enter your age: "))
 
 if user_age >= 18:
@@ -71,14 +71,14 @@ if user_fruit in fruits:
 else:
     fruits.append(user_fruit)
     print(fruits)
-
+'''
 person={
     'first_name': 'Asabeneh',
     'last_name': 'Yetayeh',
     'age': 250,
     'country': 'Finland',
     'is_married': True,
-    'skills': ['JavaScript', 'React', 'Node', 'MongoDB', 'Python'],
+    'skills': ['JavaScript', 'React'],
     'address': {
         'street': 'Space street',
         'zipcode': '02210'
@@ -86,6 +86,17 @@ person={
     }
 
 if 'skills' in person:
-    print((len(person['skills'])//2))
-    if person['skills'].index('Python') > -1:
-        print("Python")
+    print(person['skills'][(len(person['skills'])//2)])
+    if 'Python' in person['skills']:
+        print("This person can write in Python")
+    if person['skills'] == ["JavaScript", "React"]:
+        print('He is a front end developer')
+    elif person['skills'] == ["Node", "Python", "MongoDB"]:
+        print('He is a backend developer')
+    elif person['skills'] == ["React", "Node", "MongoDB"]:
+        print('He is a fullstack developer')
+    else:
+        print('Unknown title')
+
+if person['is_married'] and person['country'] == "Finland":
+    print(person['first_name'], " ", person['last_name'], " lives in ", person['country'],". He is ", "married" if person['is_married'] else "unmarried", sep='')
