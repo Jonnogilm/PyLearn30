@@ -59,3 +59,19 @@ country_lst_one = ['Finland', 'Sweden', 'Norway']
 country_lst_two = ['Denmark', 'Iceland']
 nordic_countries = [*country_lst_one, *country_lst_two]
 print(nordic_countries)  # ['Finland', 'Sweden', 'Norway', 'Denmark', 'Iceland']
+
+# enumerate prints the index of the item
+for index, i in enumerate(nordic_countries):
+    print(index, i)
+
+for index, i in enumerate(nordic_countries):
+    target_country = 'Iceland'
+    if i == target_country:
+        print(target_country, 'is at index', index)
+
+fruits = ['banana', 'orange', 'mango', 'lemon', 'lime']                    
+vegetables = ['Tomato', 'Potato', 'Cabbage','Onion', 'Carrot']
+fruits_veggies = []
+for f, v in zip(fruits, vegetables):
+    fruits_veggies.append({"Fruit" : f, "Veggies" : v})
+print(fruits_veggies)
