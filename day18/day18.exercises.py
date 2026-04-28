@@ -27,5 +27,28 @@ for x in numbers_num:
 differences_high_low = sorted(differences, reverse=True)
 print(f"Highest distance is {differences_high_low[0]}")
 
+def is_valid_variable(string_to_check):
+    bad_if = []
+    bad_if = re.findall(r'^\d|[^a-zA-Z0-9_]', string_to_check)
+    return False if len(bad_if) > 0 else True
 
+print(is_valid_variable('first_name')) # True
+print(is_valid_variable('first-name')) # False
+print(is_valid_variable('1first_name')) # False
+print(is_valid_variable('firstname')) # True
 
+sentence = '''%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is nothing; &as& mo@re rewarding as educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?'''
+
+def clean(string_to_clean):
+    cleaned = re.sub(r'[^a-zA-Z ]', '', string_to_clean)
+    return cleaned
+cleaned_teacher_sentance = re.findall(r'[a-zA-Z]+', clean(sentence))
+print(cleaned_teacher_sentance)
+tracking = {}
+for word in cleaned_teacher_sentance:
+    if word in tracking:
+        tracking[word] += 1
+    else:
+        tracking.setdefault(word, 1)
+sorted_tracking = {key: value for key, value in sorted(tracking.items(), key=lambda item: item[1], reverse=True)[:3]}
+print(sorted_tracking)
