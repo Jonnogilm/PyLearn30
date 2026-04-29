@@ -1,4 +1,7 @@
 import re
+import os
+import json
+import csv
 
 def count_num_of_lines(f):
     f.seek(0)
@@ -29,4 +32,6 @@ with open('./michelle_obama_speech.txt') as f:
 with open('./melina_trump_speech.txt') as f:
     print(f'Melina lines: {count_num_of_lines(f)}')
     print(f'Melina words: {count_num_of_words(f)}')
+    
+def most_spoken_languages(filename, number_of_countries):
     
