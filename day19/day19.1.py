@@ -1,5 +1,7 @@
 import os
 import json
+import csv
+import xlrd
 #file handling
 # many different types of files obviously (txt, csv, json)
 # use open() built in function to create read update and delete
@@ -50,3 +52,16 @@ print(person_json_2)
 # write to a file
 with open('./creating_file_example.txt', 'w', encoding='utf-8') as f:
     json.dump(person_dict, f, indent=4)
+
+# csv is comma seperated values, very common
+# use reader() method to do it
+
+with open('./csv_example.csv') as f:
+    csv_read = csv.reader(f, dialect=',')
+# basically you iterate over the csv as if it were a 2d array
+# csv_read is an iterator so you use it in a for loop
+
+# using excel data 'xlsx' with the module xlrd
+# open_workbook, nsheets, sheet_names
+
+# can also read xml files pretty easily
