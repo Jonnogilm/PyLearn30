@@ -83,30 +83,51 @@ print(cats_from_countries('https://api.thecatapi.com/v1/breeds'))
 
 # the 10 largest countries
 def get_country_large(url):
-    information = requests.get(url)
-    data = information.json()
+    data = requests.get(url).json()
     top10 = {}
-    min_of_list = ('key', 0)
     for country in data:
         country_name = country["name"]["common"]
         country_population = country["population"]
-        min_key, min_value = min_of_list
-        if min_value < country_population and len(top10) == 10:
-            top10.pop(min_key) # need to make not raise key error
-            top10.setdefault(country_name, country_population)
-            min = 0
-            for key, value in top10.items():
-                if value < min:
-                    min_of_list = (key, value)
+        if len(top10) < 10:
+            top10[country_name] = country_population
         else:
-            top10.setdefault(country_name, country_population)
-            if len(top10) == 10:
-                for key, value in top10.items():
-                    if value < min:
-                        min_of_list = (key, value)
+            element_remove = min(top10, key=top10.get)
+            min_value = top10[element_remove]
+            
+            if country_population > min_value:
+                top10.pop(element_remove)
+                top10[country_name] = country_population
     return top10
+
 print(get_country_large('https://restcountries.com/v3.1/all?fields=name,population'))
 
 #the 10 most spoken languages
+def get_most_spoken_languages(url):
+    data = requests.get(url).json()
 
-#the total number of languages in the countries API
+    languages = {}
+    for country in data:
+        lang_of_country = [language for language in country["languages"].values()]
+        for language in lang_of_country:
+            if language in languages:
+                languages[language] += 1
+            else:
+                languages.setdefault(language, 1)
+    sorted_dict = {key: value for key, value in sorted(languages.items(), key=lambda item: item[1], reverse=True)[:10]}
+    return sorted_dict
+print(get_most_spoken_languages('https://restcountries.com/v3.1/all?fields=name,languages'))
+
+# the total number of languages in the countries API
+def get_spoken_languages(url):
+    data = requests.get(url).json()
+
+    languages = {}
+    for country in data:
+        lang_of_country = [language for language in country["languages"].values()]
+        for language in lang_of_country:
+            if language in languages:
+                continue
+            else:
+                languages.setdefault(language, 1)
+    return len(languages)
+print(get_spoken_languages('https://restcountries.com/v3.1/all?fields=name,languages'))
