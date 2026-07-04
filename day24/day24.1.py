@@ -77,9 +77,8 @@ array_of_ones = np.ones((3,3), dtype = int)
 print(array_of_ones)
 
 # can also reshape with numpy:
-first = np.array([(1,2,3), (4,5,6)])
+first = np.array([[1,2,3], [4,5,6]])
 print(first)
-print(np.reshape(3,2))
 print(first.flatten())
 
 # np.random for a more powerful random number generator than the built in math one
@@ -89,10 +88,36 @@ print(np.random.normal(79, 15, 80))
 
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set()
-plt.hist(normal_array, color="grey", bins=50)
 
 # you can also use numpy to make matricies which is probably now what it is used the most for
 # matricies in numpy let you do inversing easily but you are restricted to 2D
-matrix = np.matrix(np.ones((4,4), dtype = float)
+matrix = np.matrix(np.ones((4,4), dtype = float))
 print(matrix)
+ 
+# with np you can also do all the normal statistical calculations
+# project them with matplotlib
+np_normal = np.random.normal(5, 0.5, 1000)
+plt.hist(np_normal, color="gray", bins=30)
+plt.show()
+
+#lin alg
+f = np.array([1,2,3])
+g = np.array([4,5,3])
+print(np.dot(f, g))
+
+# use matmul for matrix multiplication
+# use .I for inverse and use .det for the determinent
+day = np.array([1,2,3,4,5])
+temp = np.array(day * 10 + 2)
+
+plt.plot(day, temp)
+plt.xlabel("Day")
+plt.ylabel("Temp")
+plt.title("Tempurature by Day")
+plt.xticks(np.arange(0, 5, step=0.5))
+plt.show()
+
+# faster because all the operations are vectorized so instead of modifying all the values individually it is basically a transformation of the entire vector in space
+# cannot change size like lists in java
+# takes much less space as well
+
