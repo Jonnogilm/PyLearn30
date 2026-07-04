@@ -46,3 +46,53 @@ print(f'The array has {row} rows and {col} columns.')
 # use dtype to get type of a numpy array
 # use size to get the number of items in an array
 print(two_dimensional_numpy.size)
+
+# You can also perform mathmatical operations on the entire array by using numpy
+np_array_from_list = np.array([1,2,3,4,5])
+print(f"original: {np_array_from_list}")
+ten_plus = np_array_from_list +10
+print(f"new: {ten_plus}")
+
+# same with all the others -, *, /, %, //, **
+# much quicker than looping through the enire list and adding one by one somehow
+print(ten_plus.dtype)
+
+# can change the dtype by doing dtype = "type"
+# getting items from a numpy array is the exact same
+numpy_new_array = np.array([[1,2,3],[4,5,6],[7,8,9]])
+print(f"first row: {numpy_new_array[0]}")
+print(f"middle value: {numpy_new_array[1][1]}")
+
+# you can slice the array by doing numpy_array[range, range]
+numpy_smaller = numpy_new_array[0:2, 0:2]
+print(numpy_smaller)
+
+#reverse the entire array using ::
+two_dimension_flipped = numpy_new_array[::]
+print(two_dimension_flipped)
+
+# flip columns and rows as you would with ::-1
+# np.zeros to make an array with all zeros or np.ones
+array_of_ones = np.ones((3,3), dtype = int)
+print(array_of_ones)
+
+# can also reshape with numpy:
+first = np.array([(1,2,3), (4,5,6)])
+print(first)
+print(np.reshape(3,2))
+print(first.flatten())
+
+# np.random for a more powerful random number generator than the built in math one
+#mu, sigma, size of the list
+print(np.random.normal(79, 15, 80))
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
+plt.hist(normal_array, color="grey", bins=50)
+
+# you can also use numpy to make matricies which is probably now what it is used the most for
+# matricies in numpy let you do inversing easily but you are restricted to 2D
+matrix = np.matrix(np.ones((4,4), dtype = float)
+print(matrix)
